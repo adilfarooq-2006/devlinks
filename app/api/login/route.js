@@ -1,10 +1,9 @@
-"user server"
+"use server"
 import { NextResponse } from "next/server";
 import User from "@/models/User";
 import connectDB from "@/lib/mongodb";
-import z from "zod";
 import { redirect } from "next/navigation";
-import { createSession, deleteSession } from "../lib/session";
+import { createSession, deleteSession } from "@/lib/session";
 
 
 
@@ -27,8 +26,7 @@ export async function POST(req) {
     }
 
     await createSession(email);
-    redirect('/dashboard')
-    return NextResponse.json({ message: "Login successful" }, { status: 200 });  
+    return NextResponse.json({ message: "Login successful", success: true, error: false }, { status: 200 });  
 }
 
 export async function GET(req) {
