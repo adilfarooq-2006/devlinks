@@ -46,14 +46,14 @@ const Dashboard = () => {
   return (
     <>
     <div className='text-white min-h-screen flex flex-col items-center justify-center gap-5'>
-    <div className='flex flex-col gap-3 bg-neutral-900 rounded-lg p-4'>
-      <h1 className='font-bold text-2xl'>Welcome to your dashboard {userData?.fullname}</h1>
+    <div className='flex flex-col gap-3 w-100 bg-neutral-900 rounded-lg p-4'>
+      <h1 className='font-bold text-2xl text-center'>Welcome  {userData?.fullname}</h1>
       <div className='flex items-center justify-between'>
         <div className="left">
           <p>{userData?.username}</p>
         </div>
         <div className="right">
-          <button onClick={handleLogout} className='bg-neutral-800 text-white p-2 px-4 rounded-md'>Logout</button>
+          <button onClick={handleLogout} className='bg-neutral-800 hover:bg-red-700 hover:cursor-pointer text-white p-2 px-4 rounded-md'>Logout</button>
         </div>
       </div>
       <p>Add a link</p>
