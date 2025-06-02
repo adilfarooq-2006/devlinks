@@ -7,6 +7,19 @@ const Navbar = () => {
       <div className="logo">
         <h1 className='text-2xl font-bold' >DevLinks</h1>
       </div>
+      <div className="navigation">
+        <ul className='flex gap-3 text-lg'>
+        <Link href='/'>
+          <li className='hover:cursor-pointer hover:font-semibold'>Home</li>
+          </Link>
+          <Link href='/login'>
+          <li>About Us</li>
+          </Link>
+          <Link href='/login'>
+          <li>Contact</li>
+          </Link>
+        </ul>
+      </div>
       <div className="login flex gap-2">
         <Link href='/login'>
           <button className='bg-black border border-neutral-700 hover:cursor-pointer hover:border-neutral-400 hover:text-white text-neutral-300 transition-all p-2 px-4 text-lg rounded-md'>Login</button>
