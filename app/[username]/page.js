@@ -11,7 +11,7 @@ const Page = ({ params }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`api/link/getlinks`);
+      const res = await fetch(`api/link/${username}`);
       const data = await res.json();
       setUserData(data);
     };
