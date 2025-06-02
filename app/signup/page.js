@@ -67,7 +67,7 @@ const SignUp = () => {
                     <input name='username' value={formData.username} onChange={handleChange} className='bg-neutral-800 p-2 px-3 w-90 rounded-md' type="text" placeholder='Enter your @username ' />
                     <input name='email' value={formData.email} onChange={handleChange} className='bg-neutral-800 p-2 px-3 w-90 rounded-md' type="email" placeholder='Enter your email' />
                     <input name='password' value={formData.password} onChange={handleChange} className='bg-neutral-800 p-2 px-3 w-90 rounded-md' type="password" placeholder='Enter your password' />
-                    <button className='bg-violet-800 p-2 rounded-md hover:cursor-pointer' type='submit'>SignUp</button>
+                    <button className='border bg-black border-black hover:border-neutral-700 p-2 rounded-md hover:cursor-pointer' type='submit'>SignUp</button>
                 </form>
             </div>
         </div>

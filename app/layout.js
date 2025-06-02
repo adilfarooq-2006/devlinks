@@ -22,9 +22,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative`}>
-        <div className="fixed inset-0 -z-10 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]" />
+ <div className="bg-black min-h-screen">
         <Navbar />
         {children}
+        </div>
       </body>
     </html>
   );

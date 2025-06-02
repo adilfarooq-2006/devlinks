@@ -64,7 +64,7 @@ const LoginPage = () => {
         <form className='flex flex-col gap-3'>
           <input name='email' value={formData.email} onChange={handleChange} className='bg-neutral-800 p-2 px-3 w-90 rounded-md' type="email" placeholder='Enter your email' />
           <input name='password' value={formData.password} onChange={handleChange} className='bg-neutral-800 p-2 px-3 w-90 rounded-md' type="password" placeholder='Enter your password' />
-          <button onClick={(e) => handleSubmit(e)} className='bg-violet-800 p-2 rounded-md hover:cursor-pointer' type='submit'>Login</button>
+          <button onClick={(e) => handleSubmit(e)} className='bg-black border border-black hover:border-neutral-700 p-2 rounded-md hover:cursor-pointer' type='submit'>Login</button>
         </form>
       </div>
     </div>

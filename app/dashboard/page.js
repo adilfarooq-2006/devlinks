@@ -87,10 +87,10 @@ const Dashboard = () => {
         <div className='flex flex-col gap-3 w-100 bg-neutral-900 rounded-lg p-4'>
           <h1 className='font-bold text-2xl text-center'>Welcome  {userData?.fullname}</h1>
           <p>Your  public profie link:</p>
-          <Link target='_blank' href={`/${userData.username}`}><p className="text-blue-400 hover:underline">{process.env.NEXT_PUBLIC_HOST+'/'+userData.username}</p></Link>
+          <Link target='_blank' href={`/${userData.username}`}><p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{process.env.NEXT_PUBLIC_HOST+'/'+userData.username}</p></Link>
           <div className='flex items-center justify-between'>
             <div className="left">
-              <p>{userData?.username}</p>
+              <p className='font-semibold'>{userData?.username}</p>
             </div>
             <div className="right">
               <button onClick={handleLogout} className='bg-neutral-800 hover:bg-red-700 hover:cursor-pointer text-white p-2 px-4 rounded-md'>Logout</button>
@@ -111,14 +111,14 @@ const Dashboard = () => {
             value={linkUrl}
             onChange={(e) => setLinkUrl(e.target.value)}
           />
-          <button onClick={handleAddLink} className='bg-violet-800 rounded-lg p-2'>Add a link</button>
+          <button onClick={handleAddLink} className='bg-black border border-black hover:border-neutral-700 rounded-lg p-2'>Add a link</button>
 
           {/* Display user links */}
           {userData?.links && userData.links.map((link, index) => (
             <div key={index} className='bg-neutral-800 rounded-lg p-4'>
-              <p>{link.linkName}</p>
+              <p className='font-semibold'>{link.linkName}</p>
               <Link target='_blank' href={link.url}>
-                <p className="text-blue-400 hover:underline">{link.url}</p>
+                <p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{link.url}</p>
               </Link>
             </div>
           ))}
