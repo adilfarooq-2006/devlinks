@@ -51,7 +51,7 @@ const Dashboard = () => {
     try {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      
+
 
       const raw = JSON.stringify({
         "linkName": linkName,
@@ -70,11 +70,13 @@ const Dashboard = () => {
           alert("Link added successfully");
           setLinkName('');
           setLinkUrl('');
-          return response.json()})
+          return response.json()
+        })
         .then((result) => console.log(result))
         .catch((error) => {
           alert("Error adding link");
-          console.error(error)});
+          console.error(error)
+        });
     } catch (error) {
 
     }
@@ -87,7 +89,7 @@ const Dashboard = () => {
         <div className='flex flex-col gap-3 w-100 bg-neutral-900 rounded-lg p-4'>
           <h1 className='font-bold text-2xl text-center'>Welcome  {userData?.fullname}</h1>
           <p>Your  public profie link:</p>
-          <Link target='_blank' href={`/${userData.username}`}><p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{process.env.NEXT_PUBLIC_HOST+'/'+userData.username}</p></Link>
+          <Link target='_blank' href={`/${userData.username}`}><p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{process.env.NEXT_PUBLIC_HOST + '/' + userData.username}</p></Link>
           <div className='flex items-center justify-between'>
             <div className="left">
               <p className='font-semibold'>{userData?.username}</p>
@@ -95,6 +97,16 @@ const Dashboard = () => {
             <div className="right">
               <button onClick={handleLogout} className='bg-neutral-800 hover:bg-red-700 hover:cursor-pointer text-white p-2 px-4 rounded-md'>Logout</button>
             </div>
+          </div>
+          <div className='flex flex-col gap-2'>
+            <input
+              className='bg-neutral-800 p-2 rounded-md'
+              type="text"
+              placeholder='Enter your profile picture link'
+              value={linkName}
+              onChange={(e) => setLinkName(e.target.value)}
+            />
+            <button onClick={handleAddLink} className='bg-black border border-black hover:border-neutral-700 rounded-lg p-2'>Update</button>
           </div>
           <p>Add a link</p>
           <input
@@ -115,11 +127,16 @@ const Dashboard = () => {
 
           {/* Display user links */}
           {userData?.links && userData.links.map((link, index) => (
-            <div key={index} className='bg-neutral-800 rounded-lg p-4'>
-              <p className='font-semibold'>{link.linkName}</p>
-              <Link target='_blank' href={link.url}>
-                <p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{link.url}</p>
-              </Link>
+            <div key={index} className='bg-neutral-800 rounded-lg p-4 flex justify-between'>
+              <div>
+                <p className='font-semibold'>{link.linkName}</p>
+                <Link target='_blank' href={link.url}>
+                  <p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{link.url}</p>
+                </Link>
+              </div>
+              <div>
+                <button className='bg-neutral-900 hover:bg-red-700 hover:cursor-pointer text-white p-2 px-4 rounded-md'>Delete</button>
+              </div>
             </div>
           ))}
 
