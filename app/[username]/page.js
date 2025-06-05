@@ -25,7 +25,7 @@ const Page = ({ params }) => {
 
         <div className='flex flex-col rounded-lg items-center justify-center bg-neutral-800 p-4 mt-30 w-120'>
           <div className='flex flex-col items-center justify-center'>
-            <div className="circle w-30 h-30 rounded-full bg-white"></div>
+            <div className="circle w-30 h-30 rounded-full bg-gradient-to-bl from-blue-600 to-indigo-300"></div>
             <div className="username mt-2 text-xl font-semibold">{username}</div>
           </div>
            {userData.length === 0 ? (

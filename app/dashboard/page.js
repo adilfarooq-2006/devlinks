@@ -98,16 +98,7 @@ const Dashboard = () => {
               <button onClick={handleLogout} className='bg-neutral-800 hover:bg-red-700 hover:cursor-pointer text-white p-2 px-4 rounded-md'>Logout</button>
             </div>
           </div>
-          <div className='flex flex-col gap-2'>
-            <input
-              className='bg-neutral-800 p-2 rounded-md'
-              type="text"
-              placeholder='Enter your profile picture link'
-              value={linkName}
-              onChange={(e) => setLinkName(e.target.value)}
-            />
-            <button onClick={handleAddLink} className='bg-black border border-black hover:border-neutral-700 rounded-lg p-2'>Update</button>
-          </div>
+         
           <p>Add a link</p>
           <input
             className='bg-neutral-800 p-2 rounded-md'
