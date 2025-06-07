@@ -23,7 +23,7 @@ const Page = ({ params }) => {
     <>
       <div className='flex flex-col justify-center items-center text-white'>
 
-        <div className='flex flex-col rounded-lg items-center justify-center bg-neutral-800 p-4 mt-30 w-120'>
+        <div className='flex flex-col rounded-lg items-center justify-center bg-neutral-800 p-4 mt-30 md:w-120 w-100'>
           <div className='flex flex-col items-center justify-center'>
             <div className="circle w-30 h-30 rounded-full bg-gradient-to-bl from-blue-600 to-indigo-300"></div>
             <div className="username mt-2 text-xl font-semibold">{username}</div>
@@ -33,7 +33,7 @@ const Page = ({ params }) => {
         ) : (
           userData.map((link) => (
             <div key={link.url} className="boxes flex flex-col">
-              <Link href={link.url} target='_blank'><div className="box1 bg-neutral-900 border border-neutral-900 hover:border-neutral-600 transition-all p-3 mt-3 w-110 py-5 rounded-lg flex items-center justify-center">
+              <Link href={link.url} target='_blank'><div className="box1 bg-neutral-900 border border-neutral-900 hover:border-neutral-600 transition-all p-3 mt-3 md:w-110 w-90 py-5 rounded-lg flex items-center justify-center">
                 <h1 className='text-xl font-semibold'>{link.linkName}</h1>
               </div>
               </Link>
