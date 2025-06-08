@@ -2,6 +2,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { toast } from 'sonner'
 import { useState, useEffect } from 'react';
 
 const Dashboard = () => {
@@ -39,13 +40,17 @@ const Dashboard = () => {
     router.push('/login');
   };
 
+  const handleDelete = async() =>{
+    
+  }
+
   if (loading) {
     return <div className="text-white min-h-screen flex items-center justify-center">Loading...</div>;
   }
 
   const handleAddLink = async () => {
     if (!linkName || !linkUrl) {
-      alert('Please enter both link name and URL.');
+      toast('Please enter both link name and URL.');
       return;
     }
     try {
@@ -67,14 +72,14 @@ const Dashboard = () => {
 
       fetch("api/link/add", requestOptions)
         .then((response) => {
-          alert("Link added successfully");
+          toast("Link added successfully");
           setLinkName('');
           setLinkUrl('');
           return response.json()
         })
         .then((result) => console.log(result))
         .catch((error) => {
-          alert("Error adding link");
+          toast("Error adding link");
           console.error(error)
         });
     } catch (error) {
@@ -86,7 +91,7 @@ const Dashboard = () => {
   return (
     <>
       <div className='text-white min-h-screen flex flex-col items-center justify-center gap-5'>
-        <div className='flex flex-col gap-3 w-100 bg-neutral-900 rounded-lg p-4'>
+        <div className='flex flex-col gap-3 w-150 bg-neutral-900 rounded-lg p-4'>
           <h1 className='font-bold text-2xl text-center'>Welcome  {userData?.fullname}</h1>
           <p>Your  public profie link:</p>
           <Link target='_blank' href={`/${userData.username}`}><p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{process.env.NEXT_PUBLIC_HOST + '/' + userData.username}</p></Link>
@@ -119,7 +124,7 @@ const Dashboard = () => {
           {/* Display user links */}
           {userData?.links && userData.links.map((link, index) => (
             <div key={index} className='bg-neutral-800 rounded-lg p-4 flex justify-between'>
-              <div>
+              <div className='w-100'>
                 <p className='font-semibold'>{link.linkName}</p>
                 <Link target='_blank' href={link.url}>
                   <p className="text-neutral-300 hover:text-white hover:underline-offset-4 hover:underline transition-all">{link.url}</p>

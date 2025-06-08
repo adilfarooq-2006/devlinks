@@ -1,8 +1,12 @@
 "use client"
 import React from 'react'
 import { useState } from 'react'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 const SignUp = () => {
+    const router = useRouter(); // Import useRouter from next/navigation
+
     const [formData, setformData] = useState([{
         fullname: '',
         username: '',
@@ -34,12 +38,17 @@ const SignUp = () => {
             redirect: "follow"
         };
 
-        fetch("api/signup", requestOptions)
-            .then((response) => {
+        fetch("/api/signup", requestOptions)
+        .then(async (response) => {
+                const result = await response.json();
                 if (!response.ok) {
+                    toast(result.message || "SignUp Failed")
                     throw new Error('Network response was not ok');
+
                 }
-                alert("created")
+                toast( "SignUp Successful")
+                router.push('/login')
+
                 setformData({
                     fullname: '',
                     username: '',
@@ -50,7 +59,6 @@ const SignUp = () => {
             })
             .then((result) => console.log(result))
             .catch((error) => {
-                alert("Error")
                 console.error(error)
             });
 

@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 const LoginPage = () => {
   const router = useRouter();
@@ -42,16 +43,16 @@ const LoginPage = () => {
       const result = await response.json();
       
       if (response.ok) {
-        alert('Login successful');
+        toast('Login successful');
         console.log(result);
         // Redirect to dashboard or handle successful login
         router.push('/dashboard');
       } else {
-        alert('Login unsuccessful: ' + result.message);
+        toast('Login unsuccessful: ' + result.message);
         console.error(result);
       }
     } catch (error) {
-      alert('Login failed. Please try again.');
+      toast('Login failed. Please try again.');
       console.error('Error:', error);
     }
   }

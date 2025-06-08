@@ -8,6 +8,16 @@ export async function POST(request) {
     const body = await request.json();
     const { username, fullname, email, password } = body;
     try {
+       
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return NextResponse.json({
+                success: false,
+                message: "Username already taken. Please choose a different username.",
+                error: true
+            }, { status: 409 }); 
+        }
+
         const user = await User.create({
             username,
             fullname,
@@ -28,6 +38,6 @@ export async function POST(request) {
             success: false,
             message: "User not created",
             error: true
-        }, { status: 201 });
+        }, { status: 500 }); // Changed status to 500 for internal server errors
     }
 }
